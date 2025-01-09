@@ -13,17 +13,17 @@ spec:
       labels:
         app: bird-gallery
     spec:
-      nodename: 10.0.88.201
+      nodeName: 10.0.88.201
       initContainers:
       - name: scraper
-        image: bird-gallery:latest
+        image: bird-web:v1.0
         command: ['python', 'bird_scraper.py']
         volumeMounts:
         - name: shared-data
           mountPath: /app/static
       containers:
       - name: web
-        image: bird-gallery:latest
+        image: bird-web:v1.0
         ports:
         - containerPort: 5000
         volumeMounts:
