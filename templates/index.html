@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>中国常见鸟类图鉴</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>鸟类目录</h2>
+            <ul id="bird-list">
+                {% for bird_name in birds %}
+                <li>
+                    <a href="#{{ bird_name }}">{{ bird_name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="content">
+            {% for bird_name, bird_info in birds.items() %}
+            <div class="bird-section" id="{{ bird_name }}">
+                <h2>{{ bird_name }}</h2>
+                <div class="bird-images">
+                    {% for image in bird_info.images %}
+                    <img src="{{ url_for('static', filename=image.replace('static/', '')) }}" alt="{{ bird_name }}">
+                    {% endfor %}
+                </div>
+                <p class="description">{{ bird_info.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html> 

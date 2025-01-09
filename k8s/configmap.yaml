@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bird-gallery-config
+data:
+  FLASK_ENV: "production"
+  FLASK_DEBUG: "0" 
