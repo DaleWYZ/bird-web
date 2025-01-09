@@ -4,7 +4,7 @@ metadata:
   name: bird-gallery
   namespace: default
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: bird-gallery
@@ -13,6 +13,7 @@ spec:
       labels:
         app: bird-gallery
     spec:
+      nodename: 10.0.88.201
       initContainers:
       - name: scraper
         image: bird-gallery:latest
