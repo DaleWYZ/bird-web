@@ -13,10 +13,10 @@ spec:
       labels:
         app: bird-gallery
     spec:
-      nodename: 10.0.88.201
+      nodeName: 10.0.88.201
       initContainers:
       - name: scraper
-        image: bird-gallery:latest
+        image: bird-web:v1.0
         command: ['python', 'bird_scraper.py']
         env:
         - name: FLASK_VERSION
@@ -28,12 +28,13 @@ spec:
           mountPath: /app/static
       containers:
       - name: web
-        image: bird-gallery:latest
+        image: bird-web:v1.0
         env:
         - name: FLASK_VERSION
           value: "2.0.1"
         - name: WERKZEUG_VERSION
           value: "2.0.1"
+
         ports:
         - containerPort: 5000
         volumeMounts:
