@@ -18,12 +18,22 @@ spec:
       - name: scraper
         image: bird-gallery:latest
         command: ['python', 'bird_scraper.py']
+        env:
+        - name: FLASK_VERSION
+          value: "2.0.1"
+        - name: WERKZEUG_VERSION
+          value: "2.0.1"
         volumeMounts:
         - name: shared-data
           mountPath: /app/static
       containers:
       - name: web
         image: bird-gallery:latest
+        env:
+        - name: FLASK_VERSION
+          value: "2.0.1"
+        - name: WERKZEUG_VERSION
+          value: "2.0.1"
         ports:
         - containerPort: 5000
         volumeMounts:
